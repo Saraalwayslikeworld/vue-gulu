@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>gulu</title>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    :root {
+        --font-size: 14px;
+        --border-radius: .3rem;
+        --border-color: #ccc;
+        --border-color-hover: #666;
+        --button-bg: #fff;
+        --botton-active-bg: #ccc;
+    }
+    html {
+        margin: 30px;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <g-icon name="success"></g-icon>
+        <g-icon name="loading"></g-icon>
+
+        <g-button :loading="loading1" @click="loading1=!loading1">按钮</g-button>
+        <g-button :loading="loading2" @click="loading2=!loading2" icon="download">按钮</g-button>
+        <g-button :loading="loading3" @click="loading3=!loading3" icon="setting" icon-position="right">按钮</g-button>
+        <g-button-group>
+            <g-button icon="left">上一页</g-button>
+            <g-button >更多</g-button>
+            <g-button icon="right" icon-position="right">下一页</g-button>
+        </g-button-group>
+    </div>
+    <script src="//at.alicdn.com/t/font_838809_xpqb0vlyo47.js"></script>
+    <!-- <script src="./src/static/iconfont.js"></script> -->
+    <script src='./src/app.js'></script>
+</body>
+</html>

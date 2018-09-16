@@ -1,0 +1,33 @@
+{
+  "name": "sara-gulu",
+  "version": "0.0.1",
+  "description": "基于 vue.js的UI框架习作",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "saraWong",
+  "license": "ISC",
+  "dependencies": {
+    "button": "^1.1.1",
+    "vue": "^2.5.17",
+    "vue-hot-reload-api": "^2.3.0"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.2.0",
+    "node-sass": "^4.9.3",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saraalwayslikeworld/vue-gulu.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Saraalwayslikeworld/vue-gulu/issues"
+  },
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.common.js"
+  },
+  "homepage": "https://github.com/Saraalwayslikeworld/vue-gulu#readme"
+}
