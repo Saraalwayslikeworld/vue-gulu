@@ -1,8 +1,6 @@
 <template>
   <div class="col" :class="colClass" :style="colStyle">
-    <div style="border:1px solid green; height:100%">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 <script>
@@ -73,20 +71,7 @@ $height: 50px;
       margin-right: ($i/24) * 100%;
     }
   }
-  // @media (max-width: 576px) {
-  //   $class-prefix: phone-;
-  //   @for $i from 1 through 24 {
-  //     &.col-#{$class-prefix}#{$i} {
-  //       width: ($i/24) * 100%;
-  //     }
-  //   }
-  //   @for $i from 1 through 24 {
-  //     &.offset-#{$class-prefix}#{$i} {
-  //       margin-right: ($i/24) * 100%;
-  //     }
-  //   }
-  // }
-  @media (min-width: 577px) and (max-width: 768px) {
+  @media (min-width: 577px) {
     $class-prefix: ipad-;
     @for $i from 1 through 24 {
       &.col-#{$class-prefix}#{$i} {
@@ -99,7 +84,7 @@ $height: 50px;
       }
     }
   }
-  @media (min-width: 769px) and (max-width: 992px) {
+  @media (min-width: 769px) {
     $class-prefix: narrow-pc-;
     @for $i from 1 through 24 {
       &.col-#{$class-prefix}#{$i} {
@@ -112,7 +97,7 @@ $height: 50px;
       }
     }
   }
-  @media (min-width: 993px) and (max-width: 1200px) {
+  @media (min-width: 993px) {
     $class-prefix: pc-;
     @for $i from 1 through 24 {
       &.col-#{$class-prefix}#{$i} {
