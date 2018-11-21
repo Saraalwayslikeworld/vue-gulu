@@ -27,6 +27,10 @@
       .box {
         margin: 20px;
       }
+      .bdr {
+        border: 1px solid red;
+        min-height: 100px;
+      }
     </style>
   </head>
 
@@ -80,6 +84,18 @@
           <g-col span="4"> 2 </g-col>
           <g-col span="10"> 3 </g-col>
         </g-row>
+      </div>
+      <div class="box">
+        <g-layout class="bdr" style="height: 500px">
+          <g-header class="bdr">header</g-header>
+          <g-layout class="bdr">
+            <g-aside class="bdr">aside</g-aside>
+            <g-layout class="bdr">
+              <g-content class="bdr">content</g-content>
+              <g-footer class="bdr">footer</g-footer>
+            </g-layout>
+          </g-layout>
+        </g-layout>
       </div>
     </div>
     <script src="//at.alicdn.com/t/font_838809_31feacu79rn.js"></script>
