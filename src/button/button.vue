@@ -10,42 +10,42 @@
 </template>
 
 <script>
-import Icon from './icon';
+import Icon from "../icon/icon";
 export default {
-  name: 'g-button',
+  name: "g-button",
   components: {
-    'g-icon': Icon,
+    "g-icon": Icon
   },
   props: {
     icon: {},
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     iconPosition: {
       type: String,
-      default: 'left',
+      default: "left",
       validator(val) {
-        return val === 'left' || val === 'right';
-      },
+        return val === "left" || val === "right";
+      }
     },
     type: {
       type: String,
-      default: '',
+      default: "",
       validator(val) {
-        return val === '' || val === 'round';
-      },
+        return val === "" || val === "round";
+      }
     },
     disabled: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   methods: {
     trrigerClick() {
-      this.$emit('click');
-    },
-  },
+      this.$emit("click");
+    }
+  }
 };
 </script>
 

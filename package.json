@@ -11,7 +11,7 @@
   "author": "saraWong",
   "license": "ISC",
   "dependencies": {
-    "vue": "^2.5.17",
+    "vue": "^2.6.6",
     "vue-hot-reload-api": "^2.3.0"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "node-sass": "^4.9.3",
     "sinon": "^6.3.3",
     "sinon-chai": "^3.2.0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.6.6"
   },
   "repository": {
     "type": "git",

@@ -1,105 +1,131 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>gulu</title>
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-      :root {
-        --font-size: 14px;
-        --border-radius: 0.3rem;
-        --border-color: #ccc;
-        --border-color-hover: #666;
-        --button-bg: #fff;
-        --botton-active-bg: #ccc;
-        --disabled-bg: #ddd;
-        --disabled-color: #999;
-      }
-      html {
-        margin: 30px;
-      }
-      .box {
-        margin: 20px;
-      }
-      .bdr {
-        border: 1px solid red;
-        min-height: 100px;
-      }
-    </style>
-  </head>
 
-  <body>
-    <div id="app">
-      <div class="box">
-        <g-input value="hello" v-model="msg"></g-input>
-        <p>{{ msg }}</p>
-        <g-input value="hello" readonly></g-input>
-        <g-input value="hello" disabled></g-input>
-      </div>
-      <div class="box"><g-input value="hello" error="error"></g-input></div>
-      <div class="box">
-        <g-icon name="success"></g-icon>
-        <g-icon name="warning"></g-icon>
-        <g-icon name="search"></g-icon>
-        <g-icon name="calander"></g-icon>
-        <g-icon name="close"></g-icon>
-      </div>
-      <div class="box">
-        <g-button icon="edit" type="round"></g-button>
-        <g-button icon="edit" disabled>编辑</g-button>
-        <g-button :loading="loading1" @click="loading1=!loading1" :disabled="false">按钮</g-button>
-        <g-button :loading="loading2" @click="loading2=!loading2" icon="edit">按钮</g-button>
-        <g-button :loading="loading3" @click="loading3=!loading3" icon="setting" icon-position="right">按钮</g-button>
-      </div>
-      <div class="box">
-        <g-button-group>
-          <g-button icon="left">上一页</g-button>
-          <g-button>更多</g-button>
-          <g-button icon="right" icon-position="right">下一页</g-button>
-        </g-button-group>
-      </div>
-      <div class="box" style="border: 1px solid red">
-        <g-row gutter="10">
-          <g-col span="12" :ipad="{span:8}" :narrow-pc="{span:6}"> 1 </g-col>
-          <g-col span="12" :ipad="{span:16}" :narrow-pc="{span:18}"> 2 </g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="9" offset="1"> 1 </g-col>
-          <g-col span="14"> 2 </g-col>
-        </g-row>
-        <g-row gutter="20">
-          <g-col span="9" offset="1">
-            <g-row align="right">
-              <div>1</div>
-              <div>2</div>
-              <div>3</div>
-            </g-row>
-          </g-col>
-          <g-col span="4"> 2 </g-col>
-          <g-col span="10"> 3 </g-col>
-        </g-row>
-      </div>
-      <div class="box">
-        <g-layout class="bdr" style="height: 500px">
-          <g-header class="bdr">header</g-header>
-          <g-layout class="bdr">
-            <g-aside class="bdr">aside</g-aside>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>gulu</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --font-size: 14px;
+      --border-radius: 0.3rem;
+      --border-color: #ccc;
+      --border-color-hover: #666;
+      --button-bg: #fff;
+      --botton-active-bg: #ccc;
+      --disabled-bg: #ddd;
+      --disabled-color: #999;
+    }
+
+    html {
+      margin: 30px;
+    }
+
+    .box {
+      margin: 20px;
+    }
+
+    .bdr {
+      border: 1px solid red;
+      min-height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!--
+        <div class="box">
+          <g-input value="hello" v-model="msg"></g-input>
+          <p>{{ msg }}</p>
+          <g-input value="hello" readonly></g-input>
+          <g-input value="hello" disabled></g-input>
+        </div>
+        <div class="box"><g-input value="hello" error="error"></g-input></div>
+        <div class="box">
+          <g-icon name="success"></g-icon>
+          <g-icon name="warning"></g-icon>
+          <g-icon name="search"></g-icon>
+          <g-icon name="calander"></g-icon>
+          <g-icon name="close"></g-icon>
+        </div>
+        <div class="box">
+          <g-button icon="edit" type="round"></g-button>
+          <g-button icon="edit" disabled>编辑</g-button>
+          <g-button :loading="loading1" @click="loading1=!loading1" :disabled="false">按钮</g-button>
+          <g-button :loading="loading2" @click="loading2=!loading2" icon="edit">按钮</g-button>
+          <g-button :loading="loading3" @click="loading3=!loading3" icon="setting" icon-position="right">按钮</g-button>
+        </div>
+        <div class="box">
+          <g-button-group>
+            <g-button icon="left">上一页</g-button>
+            <g-button>更多</g-button>
+            <g-button icon="right" icon-position="right">下一页</g-button>
+          </g-button-group>
+        </div>
+        <div class="box" style="border: 1px solid red">
+          <g-row gutter="10">
+            <g-col span="12" :ipad="{span:8}" :narrow-pc="{span:6}"> 1 </g-col>
+            <g-col span="12" :ipad="{span:16}" :narrow-pc="{span:18}"> 2 </g-col>
+          </g-row>
+          <g-row gutter="20">
+            <g-col span="9" offset="1"> 1 </g-col>
+            <g-col span="14"> 2 </g-col>
+          </g-row>
+          <g-row gutter="20">
+            <g-col span="9" offset="1">
+              <g-row align="right">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+              </g-row>
+            </g-col>
+            <g-col span="4"> 2 </g-col>
+            <g-col span="10"> 3 </g-col>
+          </g-row>
+        </div>
+        <div class="box">
+          <g-layout class="bdr" style="height: 500px">
+            <g-header class="bdr">header</g-header>
             <g-layout class="bdr">
-              <g-content class="bdr">content</g-content>
-              <g-footer class="bdr">footer</g-footer>
+              <g-aside class="bdr">aside</g-aside>
+              <g-layout class="bdr">
+                <g-content class="bdr">content</g-content>
+                <g-footer class="bdr">footer</g-footer>
+              </g-layout>
             </g-layout>
           </g-layout>
-        </g-layout>
-      </div>
-    </div>
-    <script src="//at.alicdn.com/t/font_838809_31feacu79rn.js"></script>
-    <!-- <script src="./src/static/iconfont.js"></script> -->
-    <script src="./src/app.js"></script>
-  </body>
+        </div>
+      -->
+    <g-tabs :selected.sync="selected">
+      <g-tabs-head>
+        <g-tabs-item name="index">
+          <g-icon name="success"></g-icon>
+          首页
+        </g-tabs-item>
+        <g-tabs-item name="cook">烹饪</g-tabs-item>
+        <g-tabs-item name="music">音乐</g-tabs-item>
+        <template slot="actions">
+          <button>设置</button>
+        </template>
+      </g-tabs-head>
+      <g-tabs-content>
+        <g-tabs-pane name="index">首页内容</g-tabs-pane>
+        <g-tabs-pane name="cook">烹饪内容</g-tabs-pane>
+        <g-tabs-pane name="music">音乐内容</g-tabs-pane>
+      </g-tabs-content>
+    </g-tabs>
+  </div>
+  <script src="//at.alicdn.com/t/font_838809_31feacu79rn.js"></script>
+  <!-- <script src="./src/static/iconfont.js"></script> -->
+  <script src="./src/app.js"></script>
+</body>
+
 </html>

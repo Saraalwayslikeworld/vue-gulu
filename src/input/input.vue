@@ -9,27 +9,27 @@
   </div>
 </template>
 <script>
-import Icon from './icon.vue';
+import Icon from "../icon/icon";
 export default {
-  name: 'g-input',
+  name: "g-input",
   components: {
-    'g-icon': Icon,
+    "g-icon": Icon
   },
   props: {
     value: {
-      type: String,
+      type: String
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     readonly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     error: {
-      type: String,
-    },
+      type: String
+    }
     // placeholder: {
     //     type: String,
     // },
@@ -41,7 +41,7 @@ export default {
     //     type: String,
     //     default: 'top'
     // },
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>

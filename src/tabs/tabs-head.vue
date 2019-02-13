@@ -1,0 +1,22 @@
+<template>
+  <div class="tabs-head">
+    <slot></slot>
+    <div class="actions-wrapper">
+      <slot name="actions"></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "gTabsHead"
+};
+</script>
+
+<style scoped lang="scss">
+.tabs-head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+</style>
