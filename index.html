@@ -104,10 +104,9 @@
           </g-layout>
         </div>
       -->
-    <g-tabs :selected.sync="selected">
+    <g-tabs :selected.sync="selected" direction="vertical">
       <g-tabs-head>
         <g-tabs-item name="index">
-          <g-icon name="success"></g-icon>
           首页
         </g-tabs-item>
         <g-tabs-item name="cook">烹饪</g-tabs-item>
@@ -116,7 +115,7 @@
           <button>设置</button>
         </template>
       </g-tabs-head>
-      <g-tabs-content>
+      <g-tabs-content style="height: 200px;">
         <g-tabs-pane name="index">首页内容</g-tabs-pane>
         <g-tabs-pane name="cook">烹饪内容</g-tabs-pane>
         <g-tabs-pane name="music">音乐内容</g-tabs-pane>

@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="select" :class="activeClass">
+  <div class="tabs-item" @click="select" :data-name="name" :class="{'active': this.active}">
     <slot></slot>
   </div>
 </template>
@@ -18,34 +18,35 @@ export default {
       require: true
     }
   },
-  computed: {
-    activeClass() {
-      return this.active ? "active" : "";
-    }
-  },
+  computed: {},
   inject: ["eventBus"],
   created() {
-    this.eventBus.$on("update:selected", name => {
-      this.active = this.name === name;
-    });
+    this.eventBus &&
+      this.eventBus.$on("update:selected", name => {
+        this.active = this.name === name;
+      });
   },
   methods: {
     select() {
-      this.eventBus.$emit("update:selected", this.name);
+      this.eventBus.$emit("update:selected", this.name, this);
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-$tabs-height: 24px;
-$tabs-font-size: 20px;
+$tabs-font-size: 16px;
+$active-color: #64a1ee;
+$tabs-height: 40rpx;
+
 .tabs-item {
-  height: $tabs-height;
+  // height: 100%;
   font-size: $tabs-font-size;
-  padding: 0 2em;
+  padding: 0.2em 1em;
+  display: flex;
+  align-items: center;
   &.active {
-    background: red;
+    color: $active-color;
   }
 }
 </style>

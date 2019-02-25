@@ -34,6 +34,7 @@ export default {
 
 <style scoped lang="scss">
 .tabs-pane {
+  padding: 10px;
   display: none;
   &.active {
     display: block;
