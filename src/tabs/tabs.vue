@@ -36,27 +36,32 @@ export default {
       }
     }
   },
-  mounted() {
-    if (this.$children.length === 0) {
+  methods:{
+    checkChildren(){
+      if (this.$children.length === 0) {
       console &&
         console.warn &&
         console.warn(
           "tabs的子组件应该是tabs-head和tabs-content，但你没有写组件"
         );
-    }
-    this.eventBus.$emit("direction", this.direction);
-    this.$children.forEach(vm => {
-      if (vm.$options.name === "gTabsHead") {
-        vm.$children.forEach(child => {
-          if (
-            child.$options.name === "gTabsItem" &&
-            child.name === this.selected
-          ) {
-            this.eventBus.$emit("update:selected", this.selected, child);
-          }
-        });
       }
-    });
+    },
+    selectTab() {
+      this.$children.forEach(vm => {
+        if (vm.$options.name === "gTabsHead") {
+          vm.$children.forEach(child => {
+            if ( child.$options.name === "gTabsItem" && child.name === this.selected) {
+              this.eventBus.$emit("update:selected", this.selected, child);
+            }
+          });
+        }
+      });
+    }
+  },
+  mounted() {
+    this.checkChildren();
+    this.selectTab();
+    this.eventBus.$emit("direction", this.direction);
   },
   provide() {
     return {
