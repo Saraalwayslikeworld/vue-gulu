@@ -1,7 +1,7 @@
 <template>
-  <div class="popover" @click.stop="onClick" ref="popover" @mouseover="onHover" @mouseleave="hoverLeave">
+  <div class="popover"  ref="popover" >
     <div ref="contentWrapper" class="content-wrapper" :class="[`position-${placement}`]" v-if="visible">
-      <slot name="content"></slot>
+      <slot name="content" :close="close" ></slot>
     </div>
     <span ref="triggerWrapper" style="display: inline-block">
       <slot></slot>
@@ -33,33 +33,40 @@ export default {
       visible: false
     };
   },
+  mounted() {
+    if(this.trigger === 'click') {
+      this.$refs.popover.addEventListener('click',this.onClick);
+    } else {
+      this.$refs.popover.addEventListener('mouseenter',this.open)
+      this.$refs.popover.addEventListener('mouseleave',this.close)
+    }
+  },
+  destroyed() {
+    if(this.trigger === 'click') {
+      this.$refs.popover.removeEventListener('click',this.onClick);
+    } else {
+      this.$refs.popover.removeEventListener('mouseenter',this.open)
+      this.$refs.popover.removeEventListener('mouseleave',this.close)
+    }
+  },
   methods: {
-    onHover(){
-      if(this.trigger !== 'hover'){return;}
-      this.open('hover');
-    },
-    hoverLeave() {
-      if(this.trigger !== 'hover'){return;}
-      this.close('hover');
-    },
     onClick(e) {
-      if(this.trigger !== 'click'){return;}
       if (this.visible === true) {
           this.close();
         } else {
           this.open();
         }
     },
-    open(type = 'click') {
+    open() {
       this.visible = true;
       this.$nextTick(() => {
         this.putContent();
-        type === 'click' && document.addEventListener("click", this.onClickDocument);
+        this.trigger === 'click' && document.addEventListener("click", this.onClickDocument);
       });
     },
-    close(type = 'click') {
+    close() {
       this.visible = false;
-      type === 'click' && document.removeEventListener("click", this.onClickDocument);
+      this.trigger === 'click' && document.removeEventListener("click", this.onClickDocument);
     },
     onClickDocument(e) {
       if (this.$refs.contentWrapper && this.$refs.contentWrapper.contains(e.target) || this.$refs.popover && this.$refs.popover.contains(e.target)){
@@ -70,38 +77,37 @@ export default {
     putContent() {
       const { contentWrapper, triggerWrapper } = this.$refs;
       document.body.appendChild(contentWrapper);
-      let {
-        width,
-        height,
-        left,
-        top
-      } = triggerWrapper.getBoundingClientRect();
-      let { height: height2} = contentWrapper.getBoundingClientRect();
-      switch (this.placement){
-        case 'left':
-        top = top + window.pageYOffset + (height - height2)/2 + 'px';
-        left = left + window.pageXOffset  + 'px';
-        break;
-        case 'right':
-        top = top + window.pageYOffset + (height - height2)/2 +'px';
-        left = left + window.pageXOffset + width + 'px';
-        break;
-        default:
-        top = top + window.pageYOffset + 'px';
-        left = left + window.pageXOffset + 'px';
-        break;
+      const { width, height, left, top } = triggerWrapper.getBoundingClientRect();
+      const { height: height2} = contentWrapper.getBoundingClientRect();
+      let positionConfig = {
+        top: {
+          top: top + window.pageYOffset,
+          left:left + window.pageXOffset
+        },
+        bottom: {
+          top: top + window.pageYOffset,
+          left:left + window.pageXOffset
+        },
+        left: {
+          top: top + window.pageYOffset + (height - height2)/2,
+          left:left + window.pageXOffset
+        },
+        right: {
+          top: top + window.pageYOffset + (height - height2)/2,
+          left: left + window.pageXOffset + width
+        }
       }
-      contentWrapper.style.top = top;
-      contentWrapper.style.left = left;
+      contentWrapper.style.top = positionConfig[this.placement].top + 'px';
+      contentWrapper.style.left = positionConfig[this.placement].left + 'px';
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
-$border-color: #333;
+$border-color: #999;
 $border-radius: 4px;
-$bgColor:rgba(0,0,0,0.3) ;
+$bgColor: #fff ;
 .popover {
   display: inline-block;
   position: relative;
@@ -113,6 +119,8 @@ $bgColor:rgba(0,0,0,0.3) ;
   padding: .3em .5em;
   max-width: 20em;
   word-break: break-all;
+  filter: drop-shadow(0px 2px 4px rgba(0,0,0,.3));
+
   &::after {
     content: '';
     display: inline-block;
@@ -127,6 +135,7 @@ $bgColor:rgba(0,0,0,0.3) ;
     &::after {
       top: 100%;
       left: 12px;
+      border-bottom: none;
       border-top-color: $bgColor;
     }
   }
@@ -136,6 +145,7 @@ $bgColor:rgba(0,0,0,0.3) ;
     &::after {
       bottom: 100%;
       left: 12px;
+      border-top: none;
       border-bottom-color: $bgColor;
     }
   }
@@ -145,6 +155,7 @@ $bgColor:rgba(0,0,0,0.3) ;
       transform: translateY(-50%);
       top: 50%;
       left:100%;
+      border-right: none;
       border-left-color: $bgColor;
     }
   }
@@ -154,6 +165,7 @@ $bgColor:rgba(0,0,0,0.3) ;
       transform: translateY(-50%);
       top: 50%;
       right: 100%;
+      border-left: none;
       border-right-color: $bgColor;
     }
   }

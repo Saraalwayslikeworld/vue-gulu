@@ -55,8 +55,11 @@
           <g-button>点击我 激活</g-button>
         </g-popover>
       <g-popover placement="top">
-        <template slot="content">
-          <span>我是点击内容。</span>
+        <template slot="content" slot-scope="{close}">
+          <span>
+            我是点击内容。
+            <g-button @click="close">关闭</g-button>
+          </span>
         </template>
         <g-button>点击我 激活</g-button>
       </g-popover>
