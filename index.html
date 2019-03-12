@@ -41,7 +41,7 @@
 
 <body>
   <div id="app">
-    <div style="padding: 100px;">
+    <!-- <div style="padding: 100px;">
       <g-popover placement="left" trigger="hover">
         <template slot="content">
           <span>这是一段内容,这是一段内容,这是一段内容,这是一段内容。</span>
@@ -69,8 +69,22 @@
           </template>
           <g-button>点击我 激活</g-button>
         </g-popover>
-    </div>
+    </div> -->
+    <div class="box">
+      <g-collapse :actived.sync="activeName" single>
+        <g-collapse-item title="aaaaa" name="1">
+          <div class="box">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+          <div class="box">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+        </g-collapse-item>
+        <g-collapse-item title="bbbbb" name="2">
+          bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+        </g-collapse-item>
+        <g-collapse-item title="ccccc" name="3">
+            <div class="box">ccccccccccccccccccccccccccccccccccccccccc</div>
 
+        </g-collapse-item>
+      </g-collapse>
+    </div>
     <!--
         <div class="box">
           <g-input value="hello" v-model="msg"></g-input>

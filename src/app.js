@@ -18,6 +18,8 @@ import TabsItem from './tabs/tabs-item';
 import TabsContent from './tabs/tabs-content';
 import TabsPane from './tabs/tabs-pane';
 import Popover from './popover/popover';
+import Collapse from './collapse/collapse';
+import CollapseItem from './collapse/collapseItem';
 
 Vue.component('g-button', Button);
 Vue.component('g-icon', Icon);
@@ -37,6 +39,8 @@ Vue.component('g-tabs-item', TabsItem);
 Vue.component('g-tabs-content', TabsContent);
 Vue.component('g-tabs-pane', TabsPane);
 Vue.component('g-popover', Popover);
+Vue.component('g-collapse', Collapse);
+Vue.component('g-collapse-item', CollapseItem);
 
 Vue.use(Plugin);
 
@@ -47,7 +51,9 @@ new Vue({
     loading2: false,
     loading3: false,
     msg: 'hi',
-    selected: 'music'
+    selected: 'music',
+    activeName: '2'
+
   },
   created() {
     // this.$toast({
