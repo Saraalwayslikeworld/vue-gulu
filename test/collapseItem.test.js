@@ -21,15 +21,15 @@ describe('CollapseItem', () => {
     }).$mount();
     expect(vm.$el.getAttribute('data-name')).to.equal('xxx');
   });
-  // it('接受title props.', () => {
-  //   const Constructor = Vue.extend(CollapseItem);
-  //   const vm = new Constructor({
-  //     propsData: {
-  //       name: 'xxx',
-  //       title: 'yyyyy'
-  //     },
-  //   }).$mount();
-  //   expect(vm.$el.getAttribute('data-name')).to.equal('xxx');
-  // });
+  it('接受title props.', () => {
+    const Constructor = Vue.extend(CollapseItem);
+    const vm = new Constructor({
+      propsData: {
+        name: 'xxx',
+        title: 'yyyyy'
+      },
+    }).$mount();
+    expect(vm.$el.querySelector('.title-wrapper').innerText.trim()).to.equal('yyyyy');
+  });
 
 });

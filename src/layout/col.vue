@@ -1,5 +1,5 @@
 <template>
-  <div class="col" :class="colClass" :style="colStyle">
+  <div class="lu-col" :class="colClass" :style="colStyle">
     <slot></slot>
   </div>
 </template>
@@ -15,7 +15,7 @@ const validator = (val) => {
   return valid;
 };
 export default {
-  name: 'g-col',
+  name: 'lu-col',
   props: {
     span: {
       type: [Number, String],
@@ -57,9 +57,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$height: 50px;
-.col {
-  height: $height;
+@import '../var';
+.lu-col {
+  height: $col-height;
   width: 100%;
   @for $i from 1 through 24 {
     &.col-#{$i} {

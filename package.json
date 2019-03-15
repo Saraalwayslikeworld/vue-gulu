@@ -4,9 +4,11 @@
   "description": "基于 vue.js的UI框架习作",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html --no-cache",
-    "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-minify && karma start --single-run"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "author": "saraWong",
   "license": "ISC",
@@ -15,6 +17,13 @@
     "vue-hot-reload-api": "^2.3.0"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-unit-mocha": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "fibers": "^3.1.1",
+    "sass": "^1.17.2",
+    "sass-loader": "^7.1.0",
     "@vue/component-compiler-utils": "^2.2.0",
     "chai": "^4.1.2",
     "chai-spies": "^1.0.0",
@@ -28,7 +37,9 @@
     "node-sass": "^4.9.3",
     "sinon": "^6.3.3",
     "sinon-chai": "^3.2.0",
-    "vue-template-compiler": "^2.6.6"
+    "vue-template-compiler": "^2.6.6",
+    "webpack-dev-middleware": "3.6.0",
+    "vuepress": "^0.13.0"
   },
   "repository": {
     "type": "git",
@@ -41,5 +52,15 @@
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
   },
-  "homepage": "https://github.com/Saraalwayslikeworld/vue-gulu#readme"
+  "homepage": "https://github.com/Saraalwayslikeworld/vue-gulu#readme",
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }

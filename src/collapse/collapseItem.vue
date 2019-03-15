@@ -1,8 +1,8 @@
 <template>
-  <div class="collapse-item" :class="{show: active}" @click="toggle">
+  <div class="lu-collapse-item" :class="{show: active}" @click="toggle" :data-name="name">
     <div class="title-wrapper">
       {{title}}
-      <!-- <slot name="title"></slot> -->
+    <!-- <slot name="title"></slot> -->
     </div>
     <div class="content-wrapper">
       <slot></slot>
@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    name: 'gCollapseItem',
+    name: 'lu-collapse-item',
     props: {
       title: {
         required: true,
@@ -29,16 +29,16 @@
       }
     },
     mounted(){
-      this.eventBus.$on('selectListChange', (val)=>{
+      this.eventBus && this.eventBus.$on('selectListChange', (val)=>{
         this.active = val.includes(this.name);
       })
     },
     methods: {
       toggle() {
         if(this.active === true){
-          this.eventBus.$emit('removeItem',this.name)
+          this.eventBus && this.eventBus.$emit('removeItem',this.name)
         } else if(this.active === false){
-          this.eventBus.$emit('addItem',this.name)
+          this.eventBus && this.eventBus.$emit('addItem',this.name)
         }
       },
     },
@@ -47,7 +47,7 @@
 </script>
 
 <style lang="scss" scoped>
-.collapse-item {
+.lu-collapse-item {
   transition: all 300ms ease;
   .title-wrapper {
     min-height: 2rem;

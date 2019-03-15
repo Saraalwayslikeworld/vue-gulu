@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs" :class="directionClass">
+  <div class="lu-tabs" :class="directionClass">
     <slot></slot>
   </div>
 </template>
@@ -8,7 +8,7 @@
 import Vue from "vue";
 
 export default {
-  name: "gTabs",
+  name: "lu-tabs",
   data() {
     return {
       eventBus: new Vue()
@@ -48,9 +48,9 @@ export default {
     },
     selectTab() {
       this.$children.forEach(vm => {
-        if (vm.$options.name === "gTabsHead") {
+        if (vm.$options.name === "lu-tabs-head") {
           vm.$children.forEach(child => {
-            if ( child.$options.name === "gTabsItem" && child.name === this.selected) {
+            if ( child.$options.name === "lu-tabs-item" && child.name === this.selected) {
               this.eventBus.$emit("update:selected", this.selected, child);
             }
           });
@@ -71,8 +71,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.tabs {
+<style lang="scss">
+.lu-tabs {
   display: flex;
   &.horizontal {
     flex-direction: column;

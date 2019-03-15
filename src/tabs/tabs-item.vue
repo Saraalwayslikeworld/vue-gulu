@@ -1,12 +1,12 @@
 <template>
-  <div class="tabs-item" @click="select" :data-name="name" :class="{'active': this.active}">
+  <div class="lu-tabs-item" @click="select" :data-name="name" :class="{'active': this.active}">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: "gTabsItem",
+  name: "lu-tabs-item",
   data() {
     return {
       active: false
@@ -34,12 +34,11 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-$tabs-font-size: 16px;
-$active-color: #64a1ee;
-$tabs-height: 40rpx;
+<style lang="scss">
+@import '../var';
 
-.tabs-item {
+
+.lu-tabs-item {
   // height: 100%;
   font-size: $tabs-font-size;
   padding: 0.2em 1em;

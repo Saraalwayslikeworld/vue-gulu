@@ -1,14 +1,11 @@
 <template>
-  <div class="lu-tabs-content">
+  <div class="lu-cascader">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: "lu-tabs-content"
+  name: 'lu-cascader',
 };
 </script>
-
-<style lang="scss">
-</style>

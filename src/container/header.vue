@@ -1,11 +1,11 @@
 <template>
-    <div class="header">
+    <div class="lu-header">
         <slot></slot>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'g-header',
+  name: 'lu-header',
 };
 </script>

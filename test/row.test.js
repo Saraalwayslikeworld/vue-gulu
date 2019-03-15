@@ -12,15 +12,15 @@ describe('Row', () => {
     expect(Row).to.exist;
   });
   it('可以设置gutter.', (done) => {
-    Vue.component('g-row', Row);
-    Vue.component('g-col', Col);
+    Vue.component('lu-row', Row);
+    Vue.component('lu-col', Col);
     const div = document.createElement('div');
     document.body.appendChild(div);
     div.innerHTML = `
-        <g-row gutter="10">
-            <g-col span="12"></g-col>
-            <g-col span="12"></g-col>
-        </g-row>`;
+        <lu-row gutter="10">
+            <lu-col span="12"></lu-col>
+            <lu-col span="12"></lu-col>
+        </lu-row>`;
     const vm = new Vue({
       el: div,
     });

@@ -1,11 +1,11 @@
 <template>
-  <div class="row" :style="rowStyle" :class="rowClass">
+  <div class="lu-row" :style="rowStyle" :class="rowClass">
     <slot></slot>
   </div>
 </template>
 <script>
 export default {
-  name: 'g-row',
+  name: 'lu-row',
   props: {
     gutter: {
       type: [Number, String],
@@ -34,7 +34,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.row {
+.lu-row {
   display: flex;
   &.align-center {
     justify-content: center;

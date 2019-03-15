@@ -1,16 +1,16 @@
 <template>
-    <div class="content">
+    <div class="lu-content">
         <slot></slot>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'g-content',
+  name: 'lu-content',
 };
 </script>
 <style lang="scss">
-.content {
+.lu-content {
   flex-grow: 1;
 }
 </style>

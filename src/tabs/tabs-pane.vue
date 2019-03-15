@@ -1,12 +1,12 @@
 <template>
-  <div class="tabs-pane" :class="activeClass">
+  <div class="lu-tabs-pane" :class="activeClass">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: "gTabsPane",
+  name: "lu-tabs-pane",
   data() {
     return {
       active: false
@@ -32,8 +32,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-.tabs-pane {
+<style lang="scss">
+.lu-tabs-pane {
   padding: 10px;
   display: none;
   &.active {

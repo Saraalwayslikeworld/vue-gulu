@@ -1,5 +1,5 @@
 <template>
-  <div class="collapse">
+  <div class="lu-collapse">
     <slot></slot>
   </div>
 </template>
@@ -8,7 +8,7 @@
 import Vue from "vue";
 
   export default {
-    name: "gCollapse",
+    name: "lu-collapse",
     props: {
       actived: {
         type: String | Number,
@@ -54,7 +54,7 @@ import Vue from "vue";
 </script>
 
 <style lang="scss" scoped>
-.collapse {
+.lu-collapse {
   border: 1px solid #999;
   border-radius: 10px;
 }

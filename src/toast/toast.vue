@@ -1,5 +1,5 @@
 <template>
-  <div class="toast">
+  <div class="lu-toast">
     <p class="message" v-html="message" v-if="htmlEnable" :class="{'border-right':closeBtn.text?true:false}"></p>
     <p class="message" :class="{'border-right':closeBtn.text?true:false}" v-else>
       <slot></slot>
@@ -9,7 +9,7 @@
 </template>
 <script>
 export default {
-  name: "g-toast",
+  name: "lu-toast",
   props: {
     message: {
       type: String,
@@ -56,9 +56,8 @@ export default {
 };
 </script>
 <style lang="scss">
-$font-size: 14px;
-$tosat-bg: rgba(41, 38, 38, 0.637);
-.toast {
+@import '../var';
+.lu-toast {
   position: absolute;
   top: 0;
   left: 50%;

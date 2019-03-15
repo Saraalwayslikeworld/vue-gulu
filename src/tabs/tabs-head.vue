@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-head" :class="directionClass">
+  <div class="lu-tabs-head" :class="directionClass">
     <slot></slot>
     <div class="active-line" ref="line"></div>
     <div class="actions-wrapper">
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "gTabsHead",
+  name: "lu-tabs-head",
   data() {
     return {
       direction: "horizontal"
@@ -48,9 +48,9 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-$active-color: #64a1ee;
-.tabs-head {
+<style lang="scss" scoped>
+@import '../var';
+.lu-tabs-head {
   // position: relative;
   > .active-line {
     position: absolute;

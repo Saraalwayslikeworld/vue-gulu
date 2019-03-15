@@ -1,6 +1,6 @@
 <template>
-  <div class="popover"  ref="popover" >
-    <div ref="contentWrapper" class="content-wrapper" :class="[`position-${placement}`]" v-if="visible">
+  <div class="lu-popover"  ref="popover" >
+    <div ref="contentWrapper" class="lu-popover-content-wrapper" :class="[`position-${placement}`]" v-if="visible">
       <slot name="content" :close="close" ></slot>
     </div>
     <span ref="triggerWrapper" style="display: inline-block">
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "g-popover",
+  name: "lu-popover",
   props: {
     placement: {
       type: String,
@@ -105,14 +105,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$border-color: #999;
-$border-radius: 4px;
-$bgColor: #fff ;
-.popover {
+@import '../var';
+
+.lu-popover {
   display: inline-block;
   position: relative;
 }
-.content-wrapper {
+.lu-popover-content-wrapper {
   position: absolute;
   border-radius: $border-radius;
   background: $bgColor;

@@ -27,23 +27,23 @@ describe('Popover', () => {
     // 分派事件
     vm.$el.dispatchEvent(event);
     vm.$nextTick(()=>{
-      const element = document.body.querySelector('.content-wrapper');
+      const element = document.body.querySelector('.lu-popover-content-wrapper');
       expect(element).to.exist;
       done();
     })
   });
 
   it('可以接受placement属性.', (done) => {
-    Vue.component('g-popover',Popover)
+    Vue.component('lu-popover',Popover)
     const div = document.createElement('div');
     document.body.appendChild(div);
     div.innerHTML = `
-    <g-popover placement="bottom" ref="a">
+    <lu-popover placement="bottom" ref="a">
       <template slot="content">
         <span>我是点击内容。</span>
       </template>
       <button>点击我 激活</button>
-    </g-popover>
+    </lu-popover>
     `;
     const vm = new Vue({
       el: div,

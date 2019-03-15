@@ -1,9 +1,21 @@
 <template>
-  <div class="wrapper" :class="{error}">
-    <!-- <label class="label">{{label}}</label> -->
-    <input type="text" :value="value" :disabled="disabled" :readonly="readonly" @change="$emit('change',$event.target.value)" @input="$emit('input',$event.target.value)" @focus="$emit('focus',$event.target.value)" @blur="$emit('blur',$event.target.value)">
+  <div class="lu-input" :class="{error}">
+    <form action>
+    <input 
+      :type="type" 
+      :placeholder="placeholder" 
+      :value="value" 
+      :disabled="disabled" 
+      :readonly="readonly" 
+      @change="$emit('change',$event.target.value)" 
+      @input="$emit('input',$event.target.value)" 
+      @focus="$emit('focus',$event.target.value)" 
+      @blur="$emit('blur',$event.target.value)" 
+      @keydown="confirm"
+      />
+    </form>
     <template v-if="error">
-      <g-icon name="warning" class="icon-error"></g-icon>
+      <lu-icon name="warning" class="icon-error"></lu-icon>
       <span class="error-msg">{{error}}</span>
     </template>
   </div>
@@ -11,9 +23,9 @@
 <script>
 import Icon from "../icon/icon";
 export default {
-  name: "g-input",
+  name: "lu-input",
   components: {
-    "g-icon": Icon
+    "lu-icon": Icon
   },
   props: {
     value: {
@@ -29,39 +41,28 @@ export default {
     },
     error: {
       type: String
+    },
+    type: {
+      type: String,
+      default: 'text',
+    },
+    placeholder: {
+        type: String,
+    },
+  },
+  methods: {
+    confirm(e) {
+      if(e.keyCode === 13) {
+        e.preventDefault();
+        this.$emit('confirm', e.target.value);
+      }
     }
-    // placeholder: {
-    //     type: String,
-    // },
-    // label:{
-    //     type: String,
-    //     default: ''
-    // },
-    // labelPosition: {
-    //     type: String,
-    //     default: 'top'
-    // },
   }
 };
 </script>
 <style lang="scss" scoped>
-// --font-size: 14px;
-// --border-radius: .3rem;
-// --border-color: #ccc;
-// --border-color-hover: #666;
-// --button-bg: #fff;
-// --botton-active-bg: #ccc;
-// --disabled-bg: #ddd;
-$disabled-color: #999;
-$tip-color: rgb(118, 175, 80);
-$error-color: rgb(197, 75, 38);
-$height: 32px;
-$border-color: #ccc;
-$border-color-hover: #666;
-$border-radius: 4px;
-$font-size: 14px;
-$box-shadow-color: rgba(0, 0, 0, 0.3);
-.wrapper {
+@import '../var';
+.lu-input {
   font-size: $font-size;
   display: inline-flex;
   align-items: center;
@@ -78,17 +79,19 @@ $box-shadow-color: rgba(0, 0, 0, 0.3);
       color: $error-color;
     }
   }
-  > input {
-    height: $height;
+  input {
+    height: $input-height;
     border: 1px solid $border-color;
     border-radius: $border-radius;
     padding: 0 8px;
     font-size: inherit;
+    outline: none;
+    -webkit-appearance: none; //去除ios默认样式
     &:hover {
       border-color: $border-color-hover;
     }
     &:focus {
-      outline: none;
+      // outline: none;
       box-shadow: inset 0 1px 2px $box-shadow-color;
     }
     &[disabled] {
@@ -97,5 +100,6 @@ $box-shadow-color: rgba(0, 0, 0, 0.3);
       cursor: not-allowed;
     }
   }
+  ::-webkit-search-cancel-button { display: none; } //去除搜索取消默认样式
 }
 </style>

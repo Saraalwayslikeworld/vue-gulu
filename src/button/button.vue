@@ -1,8 +1,8 @@
 
 <template>
-  <button class="g-button" :class="{[`icon-${iconPosition}`]:true,[`btn-${type}`]:true,['disable']:disabled}" :disabled="disabled" @click="trrigerClick">
-    <g-icon v-if="icon && !loading" :name="icon" class="icon" />
-    <g-icon v-if="loading" name="loading" class="loading" />
+  <button class="lu-button" :class="{[`icon-${iconPosition}`]:true,[`btn-${type}`]:true,['disable']:disabled}" :disabled="disabled" @click="trrigerClick">
+    <lu-icon v-if="icon && !loading" :name="icon" class="icon" />
+    <lu-icon v-if="loading" name="loading" class="loading" />
     <div class="content">
       <slot></slot>
     </div>
@@ -12,9 +12,9 @@
 <script>
 import Icon from "../icon/icon";
 export default {
-  name: "g-button",
+  name: "lu-button",
   components: {
-    "g-icon": Icon
+    "lu-icon": Icon
   },
   props: {
     icon: {},
@@ -50,6 +50,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../var';
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -58,20 +60,20 @@ export default {
     transform: rotate(360deg);
   }
 }
-.g-button {
-  font-size: var(--font-size);
-  height: var(--button-height);
+.lu-button {
+  font-size: $font-size;
+  height: $button-height;
   padding: 0.3em 1em;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  background: var(--button-bg);
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  background: $button-bg;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
   &.btn-round {
     border-radius: 50%;
-    width: var(--button-height);
+    width: $button-height;
     padding: 0.4em;
     > .icon {
       margin: 0;
@@ -81,20 +83,20 @@ export default {
     }
   }
   &.disable {
-    background: var(--disabled-bg);
-    color: var(--disabled-color);
+    background: $disabled-bg;
+    color: $disabled-color;
     &:hover {
-      border: 1px solid var(--disabled-bg);
+      border: 1px solid $disabled-bg;
     }
     & > .icon {
-      fill: var(--disabled-color);
+      fill: $disabled-color;
     }
   }
   &:hover {
-    border-color: var(--border-color-hover);
+    border-color: $border-color-hover;
   }
   &:active {
-    background-color: var(--botton-avtive-bg);
+    background-color: $botton-avtive-bg;
   }
   &:focus {
     outline: none;

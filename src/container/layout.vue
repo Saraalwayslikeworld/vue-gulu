@@ -1,14 +1,14 @@
 <template>
-    <div class="layout" :class="layoutClass">
+    <div class="lu-layout" :class="layoutClass">
         <slot></slot>
     </div>
 </template>
 <script>
 export default {
-  name: 'g-layout',
+  name: 'lu-layout',
   mounted() {
     this.$children.forEach((vm) => {
-      if (vm.$options.name === 'gAside') {
+      if (vm.$options.name === 'lu-aside') {
         this.layoutClass.hasAside = true;
       }
     });
@@ -23,7 +23,7 @@ export default {
 };
 </script>
 <style lang="scss" >
-.layout {
+.lu-layout {
   display: flex;
   flex-direction: column;
   flex-grow: 1;

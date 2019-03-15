@@ -1,11 +1,11 @@
 <template>
-    <div class="side">
+    <div class="lu-side">
         <slot></slot>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'gAside',
+  name: 'lu-aside',
 };
 </script>

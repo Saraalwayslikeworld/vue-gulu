@@ -1,11 +1,11 @@
 <template>
-    <div class="footer">
+    <div class="lu-footer">
         <slot></slot>
     </div>
 </template>
 <script>
 export default {
-  name: 'g-footer',
+  name: 'lu-footer',
 };
 </script>
 
